@@ -1,0 +1,23 @@
+<style>
+    h2{
+        text-align: center;
+        margin-top: 10%;
+    }
+    .attributes{
+        text-align: center;
+    }
+    .attributes span{
+        font-weight: bold;
+    }
+</style>
+
+<h2>Hero Details</h2>
+
+<h3>Hero name: 
+    <input [(ngModel)]="hero.name" placeholder="Enter hero name">
+</h3>
+<div class="attributes">
+    <span>Id: </span>{{hero.id}} | 
+    <span>Name: </span>{{hero.name}}
+</div>
+
