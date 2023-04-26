@@ -3,21 +3,71 @@
         text-align: center;
         margin-top: 10%;
     }
-    .attributes{
-        text-align: center;
-    }
-    .attributes span{
+    .red{
         font-weight: bold;
+        color: #c60d39;
+    }
+    .heroes {
+        list-style-type: none;
+        width: 15em;
+    }
+
+    .heroes li {
+        display: flex;
+    }
+
+    .heroes button {
+        flex: 1;
+        cursor: pointer;
+        position: relative;
+        left: 0;
+        background-color: #EEE;
+        margin: .5em;
+        padding: 0;
+        border-radius: 4px;
+        display: flex;
+        align-items: stretch;
+        height: 1.8em;
+    }
+
+    .heroes .badge {
+        display: inline-block;
+        font-size: small;
+        color: white;
+        padding: 0.5em 0.7em 0 0.5em;
+        background-color: #405061;
+        line-height: 1em;
+        margin-right: .8em;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .heroes .name {
+        align-self: center;
+    }
+
+    .hero-details{
+        align-self: center;
     }
 </style>
 
-<h2>Hero Details</h2>
+<h2>Heroes Lists</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of HEROES">
+        <button type="button" (click)="onSelect(hero)">
+            <span class="badge">{{hero.id}} </span>
+            <span class="name">{{hero.name}}</span>
+        </button>
+    </li>
+</ul>
 
-<h3>Hero name: 
-    <input [(ngModel)]="hero.name" placeholder="Enter hero name">
-</h3>
-<div class="attributes">
-    <span>Id: </span>{{hero.id}} | 
-    <span>Name: </span>{{hero.name}}
+<h2>Hero Details</h2>
+<div class="hero-details">
+    <span class="red">Id: </span>
+    <span *ngIf="selectedHero">{{ selectedHero.id }} | </span>
+    <span class="red">Hero Name: </span>
+    <input [(ngModel)]="selectedHero.name" *ngIf="selectedHero">
 </div>
 
+<!-- <h3>Hero name: 
+    <input [(ngModel)]="hero.name" placeholder="Enter hero name">
+</h3> -->
